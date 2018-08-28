@@ -1,0 +1,3 @@
+import analyse_screen
+
+analyse_screen.gather_infinite()

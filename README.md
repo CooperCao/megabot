@@ -4,6 +4,8 @@
 Python gui automation
 requires pyautogui and openCV
 
+Pictures are splitten into different folders depending on the resolution of the computer
+
 To do list:
 Create a function to click in the middle of a group of points when pattern matches close points (in order to avoid clicks on the edge of a cell)
 

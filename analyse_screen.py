@@ -66,7 +66,7 @@ def search(pattern, threshold = 0.6, method = cv2.TM_CCOEFF_NORMED,
     return zip(*np.where(res >= threshold)[::-1])
 
 def move(direction):
-    """Moves to the next map according to direction"""
+    """Moves to the next map according to direction ('UP', 'DOWN', 'LEFT' or 'RIGHT')"""
     ## fetching sun positions on the current screen
     loc = search(picRoot + "moving_point.png", threshold = .8)
     ## fetching edges in the list of point

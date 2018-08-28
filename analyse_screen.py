@@ -11,6 +11,7 @@ picRoot = dofusRoot + "pictures/"
 ## Packages
 ## =================================================================================
 
+import time
 import numpy as np
 import matplotlib.pyplot as plt
 #from scipy import signal# using correlation for pattern matching
@@ -63,12 +64,12 @@ def search(pattern, threshold = 0.6, method = cv2.TM_CCOEFF_NORMED,
     ## matching pattern
     res = cv2.matchTemplate(screen, template, method)
     ## returning the list of points matching the pattern with defined threshold
-    return zip(*np.where(res >= threshold)[::-1])
+    return zip(*np.where(res >= threshold)[::-1]) or []
 
 def move(direction):
     """Moves to the next map according to direction ('UP', 'DOWN', 'LEFT' or 'RIGHT')"""
     ## fetching sun positions on the current screen
-    loc = search(picRoot + "moving_point.png", threshold = .8)
+    loc = search(picRoot + "moving_point.png")
     ## fetching edges in the list of point
     up = down = left = right = loc[0]
     for pt in loc:
@@ -88,4 +89,35 @@ def move(direction):
         pt = left
     if direction == "RIGHT":
         pt = right
-    pyautogui.click(x = pt[0], y = pt[1])
+    pyautogui.click(pt)
+    return pt
+
+def gather(item, delay = 12):
+    """Collects all items on the screen with delay between clicks"""
+    ## searching for items
+    loc = search(item, threshold = .5)
+    ##shuffle to make the bot more realistic and avoid clicking the case under the character
+    np.random.shuffle(loc)
+    ## browsing fetched points in randow order
+    for pt in loc:
+        ## clicking on item
+        pyautogui.click(pt)
+        ## doing the associated action and reaching item
+        time.sleep(1)
+        action = search(picRoot + "wheat_action.png")
+        if len(action):
+            pyautogui.click(action[0])
+            time.sleep(delay)
+    return loc
+    
+def gather_infinite(item, delay = 12):
+    while True:
+        gather(item, delay)
+
+
+
+
+
+
+    
+    

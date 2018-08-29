@@ -26,12 +26,30 @@ def move(direction):
 UBUNTU 18.04 Setup:
 
 game installation:
+```shell
+sudo apt-get install wine-stable
+wine path/to/installer.exe
+echo "alias dofus1.29='wine /home/aurelien/Softwares/Dofus/Dofus_1_29/UpLauncher.exe'\n" >> ~/.bash_aliases
+```
+
+pyautogui installation
+```shell
+pip install pyautogui
+```
 
 openCV installation:
+```shell
+sudo apt-get install python-opencv
+```
 
 tesseract installation:
 ```shell
 sudo apt-get install tesseract-ocr
 sudo apt-get install libtesseract-dev
-sudo pip install pytesseract
+pip install pytesseract
+```
+
+configure mail:
+```shell
+sudo apt-get install mailutils
 ```

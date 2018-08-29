@@ -45,27 +45,29 @@ def move(direction):
     """Moves to the next map according to direction ('UP', 'DOWN', 'LEFT' or 'RIGHT')"""
     ## fetching sun positions on the current screen
     loc = search(picRoot + "moving_point.png")
-    ## fetching edges in the list of point
-    up = down = left = right = loc[0]
-    for pt in loc:
-        if pt[1] < up[1]:
-            up = pt
-        if pt[1] > down[1]:
-            down = pt
-        if pt[0] < left[0]:
-            left = pt
-        if pt[0] > right[0]:
-            right = pt
-    if direction == "UP":
-        pt = up
-    if direction == "DOWN":
-        pt = down
-    if direction == "LEFT":
-        pt = left
-    if direction == "RIGHT":
-        pt = right
-    pyautogui.click(pt)
-    return pt
+    if len(loc):
+        ## fetching edges in the list of point
+        up = down = left = right = loc[0]
+        for pt in loc:
+            if pt[1] < up[1]:
+                up = pt
+            if pt[1] > down[1]:
+                down = pt
+            if pt[0] < left[0]:
+                left = pt
+            if pt[0] > right[0]:
+                right = pt
+            if direction == "UP":
+                pt = up
+            if direction == "DOWN":
+                pt = down
+            if direction == "LEFT":
+                pt = left
+            if direction == "RIGHT":
+                pt = right
+            pyautogui.click(pt)
+        return pt
+    ## 
 
 ## =================================================================================
 ## Predicates

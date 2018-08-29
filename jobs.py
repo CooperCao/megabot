@@ -124,12 +124,15 @@ def goToAstrub(save = False):
         time.sleep(1)
         searchClick("zaap_action", threshold = .8)
         time.sleep(1)
-        searchClick("zaap_astrub",)
-
+        searchClick("zaap_astrub")
+        ## saving position
+        if save:
+            searchClick("zaap_save", threshold = .8)
 
 def goToAstrubFields():
     """Go to astrub the go up in to astrub fields"""
     goToAstrub()
+    move("UP")
     
     
 def emptyBags():

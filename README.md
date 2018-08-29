@@ -21,3 +21,14 @@ def move(direction):
 
 
 ```
+
+UBUNTU Setup:
+
+openCV installation:
+
+tesseract installation:
+```shell
+sudo apt install tesseract-ocr
+sudo apt install libtesseract-dev
+sudo pip install pytesseract
+```

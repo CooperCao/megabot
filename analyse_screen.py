@@ -33,9 +33,9 @@ def search(pattern, threshold = 0.6, method = cv2.TM_CCOEFF_NORMED,
         return [(pt[0] + w/2, pt[1] + h/2) for pt in loc]
     return []
 
-def searchClick(name, threshold = 0.8, method =  cv2.TM_CCOEFF_NORMED):
+def searchClick(name, threshold = 0.8, method =  cv2.TM_CCOEFF_NORMED, bBox = []):
     """Search and click the image described by name"""
-    loc = search(picRoot + name + ".png", threshold = threshold, method = method)
+    loc = search(picRoot + name + ".png", threshold = threshold, method = method, bBox = bBox)
     if len(loc):
         pyautogui.click(loc[0])
         return True
@@ -96,6 +96,12 @@ def levelUpp(threshold = .8, method = cv2.TM_CCOEFF_NORMED):
     return searchClick("up", threshold = threshold, method = method)
 
 def emptyInventoryp(threshold = .9, method = cv2.TM_CCOEFF_NORMED):
+    """Return True if current inventory (with selected filter) is empty"""
+    if search(picRoot + "empty_inventory.png", threshold = threshold, method = method, bBox = inventoryFirstCellBbox):
+        return True
+    return False
+
+def emptyBankInventoryp(threshold = .9, method = cv2.TM_CCOEFF_NORMED):
     """Return True if inventory is empty during a bank transaction"""
     if search(picRoot + "empty_inventory.png", threshold = threshold, method = method, bBox = bankInventoryFirstCellBbox):
         return True

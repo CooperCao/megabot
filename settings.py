@@ -13,6 +13,8 @@ import matplotlib.pyplot as plt
 from PIL import Image
 import pyautogui# keyboard, mouse control using python also takes screenshots
 import cv2# template matching to find a pattern in an image
+import pytesseract# text recognition
+import pyperclip# to get clipboard content
 
 ## =================================================================================
 ## Variables definition

@@ -4,10 +4,11 @@
 Python gui automation
 requires pyautogui and openCV
 
-Pictures are splitten into different folders depending on the resolution of the computer
-
-To do list:
-Create a function to click in the middle of a group of points when pattern matches close points (in order to avoid clicks on the edge of a cell)
+TO DO LIST:
+Creates different folder in pictures if image recognition is resolution/screen dependant
+Creates fuctions to give current position, current kamas amount on character (in bank), level, jobs levels, pods and max pods
+Creates function to go to bank/fields/astrub without using potion or zaap
+functions to locate character or opponents in combat, to move, to attack...
 
 Available functions:
 ```python
@@ -22,13 +23,15 @@ def move(direction):
 
 ```
 
-UBUNTU Setup:
+UBUNTU 18.04 Setup:
+
+game installation:
 
 openCV installation:
 
 tesseract installation:
 ```shell
-sudo apt install tesseract-ocr
-sudo apt install libtesseract-dev
+sudo apt-get install tesseract-ocr
+sudo apt-get install libtesseract-dev
 sudo pip install pytesseract
 ```

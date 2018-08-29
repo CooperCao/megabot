@@ -99,7 +99,7 @@ def goToBank():
     return searchClick("close")
 
 def goToAstrub(save = False):
-    """Comes back to astrub using a potion and a zaap"""
+    """Comes back to astrub's zaap using a potion and a zaap if necessary"""
     ## open inventory
     searchClick("inventory")
     time.sleep(1)
@@ -116,12 +116,20 @@ def goToAstrub(save = False):
     searchClick("rappel")
     pyautogui.click()#doubleclick to use potion
     time.sleep(3)#waiting for zone name to disappear
-    ## uses zaap
-    searchClick("zaap")
-    time.sleep(1)
-    searchClick("zaap_action", threshold = .8)
-    time.sleep(1)
-    searchClick("zaap_astrub",)
+
+    ## need to check if astrub is the saved postion
+    if True:
+        ## uses zaap
+        searchClick("zaap")
+        time.sleep(1)
+        searchClick("zaap_action", threshold = .8)
+        time.sleep(1)
+        searchClick("zaap_astrub",)
+
+
+def goToAstrubFields():
+    """Go to astrub the go up in to astrub fields"""
+    goToAstrub()
     
     
 def emptyBags():

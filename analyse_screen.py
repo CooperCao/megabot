@@ -91,6 +91,10 @@ def fullp(threshold = .8, method = cv2.TM_CCOEFF_NORMED):
         return True
     return False
 
+def levelUpp(threshold = .8, method = cv2.TM_CCOEFF_NORMED):
+    """Return True if player is full, False otherwise"""
+    return searchClick("up", threshold = threshold, method = method)
+
 def emptyInventoryp(threshold = .9, method = cv2.TM_CCOEFF_NORMED):
     """Return True if inventory is empty during a bank transaction"""
     if search(picRoot + "empty_inventory.png", threshold = threshold, method = method, bBox = bankInventoryFirstCellBbox):
@@ -107,3 +111,12 @@ def say(text, interval=0.25):
     pyautogui.click(335, 760)
     pyautogui.typewrite("%s\n" % text, interval)
     return text
+
+def eraseChat():
+    """Erases current display in the chat (required for some recognition function)"""
+    pyautogui.typewrite("gggg")#working only because user is not member of any guild
+    #say("%nom% %guilde%")
+    #say("%stats% %xp%")
+    #say("%vie% %viemax% %viep%")
+    #say("%zone% %souszone% %pos%")
+      

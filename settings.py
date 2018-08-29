@@ -39,3 +39,4 @@ bankInventoryFirstCellBbox = (933, 277), (966, 308)
 
 def mail(subject, text = "", adress = player, attachments = []):
   os.system('mail -s "%s" %s < %smail.txt' % (subject, adress, dofusRoot))
+

@@ -13,7 +13,7 @@ execfile("analyse_screen.py")
 ## Actions
 ## =================================================================================
 
-def gather(item, delay = 11):
+def gather(item, delay = 10):
     """Collects all items on the screen with delay between clicks"""
     ## fetching path of item and associated actions (screenshots)
     picture = picRoot + item + ".png"
@@ -36,23 +36,13 @@ def gather(item, delay = 11):
             ## wait for action + random delay to act more natural
             time.sleep(delay + random.random() * 2)
         if inFightp():
-          mail("Enterred Fight")
-          break
+            mail("Enterred Fight")
+            break
+        if fullp():
+            break
+        if levelUpp():
+            mail("Job Levelled Up")
     return loc
-    
-def gather_infinite(item, delay = 12):
-    while not fullp() and not inFightp():
-        gather(item, delay)
-    if fullp():
-      mail("Inventory is full")
-      ## display messages to remove "inventaire plein
-      ## votre récolte est perdue" from the screen
-      pyautogui.typewrite("gggg")
-      #say("%nom% %guilde%")
-      #say("%stats% %xp%")
-      #say("%vie% %viemax% %viep%")
-      #say("%zone% %souszone% %pos%")
-      ## need to go to bank to empty inventory
       
 def goToBank():
     """Uses a potion to go to Bonta and uses zaapi to enter the bank then empty inventory in the bank"""
@@ -103,3 +93,14 @@ def goToBank():
         searchClick("ok", threshold = .95)
     time.sleep(.2)
     return searchClick("close")
+
+def gather_infinite(item, delay = 12):
+    while not fullp() and not inFightp():
+        gather(item, delay)
+    if fullp():
+      mail("Inventory is full")
+      ## display messages to remove "inventaire plein
+      ## votre récolte est perdue" from the screen
+      eraseChat()
+      ## need to go to bank to empty inventory
+      goToBank()

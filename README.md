@@ -34,7 +34,10 @@ echo "alias dofus1.29='wine /home/aurelien/Softwares/Dofus/Dofus_1_29/UpLauncher
 
 pyautogui installation
 ```shell
+sudo apt-get install scrot
 pip install pyautogui
+pip install xlib
+pip install pyperclip
 ```
 
 openCV installation:
